@@ -1,4 +1,4 @@
-# Next.js Airbnb-Style Project
+# “Next.js Project Setup and Basics
 
 This is a sample project built with Next.js and TypeScript, demonstrating a simplified, Airbnb-style user interface for displaying and adding new listings.
 
