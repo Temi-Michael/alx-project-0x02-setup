@@ -26,7 +26,7 @@ const PostModal: React.FC<PostProps> = ({ title, content, onClose, addPost }) =>
 
     return (
         <div className="flex min-h-screen justify-center items-center bg-gray-200 dark:bg-black fixed inset-0 opacity-100 gradient-to-l from-gray-800 to-gray-500" aria-modal="true" role="dialog">
-            <div className="w-1/3 bg-gray-700 p-5 rounded-lg">
+            <form className="w-1/3 bg-gray-700 p-5 rounded-lg">
                 <div className="flex flex-col gap-3">
                     <label htmlFor="title">Title :</label>
                     <input type="text" name="title" id="title" value={post.title} onChange={handleChange} className="w-2/3 px-2 py-2 text-[15px] border border-solid border-gray-300 rounded-lg outline-none" />
@@ -39,7 +39,7 @@ const PostModal: React.FC<PostProps> = ({ title, content, onClose, addPost }) =>
                     <button type="button" className="bg-none text-gray-300 font-light border-none" aria-label="Close modal" onClick={onClose} role="button">Close</button>
                     <button type="button" onClick={handleSubmit} className="bg-gray-600 text-gray-300 font-semibold border-none rounded-lg p-2 " aria-describedby="Create new post" role="button">Add Post</button>
                 </div>
-            </div>
+            </form>
         </div>
     )
 }
