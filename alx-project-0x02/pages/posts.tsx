@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { useState, useEffect } from "react";
 import { CardProps } from "@/interfaces";
 import PostCard from "@/components/common/PostCard";
+import Header from "@/components/layout/Header";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -62,6 +63,7 @@ const Posts: React.FC = () => {
 
     return (
         <div className={`${geistSans.className} ${geistMono.className} w-full flex flex-col min-h-screen  p-8 dark:bg-black`}>
+            <Header />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
                 {posts.map((post, index) => (
                     <PostCard userId={post.userId} title={post.title} content={post.body} key={index} />

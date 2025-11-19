@@ -1,4 +1,3 @@
-import Header from "@/components/layout/Header";
 import { multipleCardContents } from "@/constants";
 import { CardProps, PostData } from "@/interfaces";
 import "@/styles/globals.css";
@@ -24,7 +23,6 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Header />
       <Component {...enhancedPageProps} />
     </>
   );

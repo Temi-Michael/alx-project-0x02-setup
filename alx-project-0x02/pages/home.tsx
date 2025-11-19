@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import Card from "@/components/common/Card";
 import { CardProps } from "@/interfaces";
+import Header from "@/components/layout/Header";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -21,6 +22,7 @@ const Home: React.FC<HomeProps> = ({ posts }) => {
         <div
             className={`${geistSans.className} ${geistMono.className} w-full p-[25px] bg-zinc-50 font-sans dark:bg-black`}
         >
+            <Header />
             <div className="grid grid-cols-4 gap-5">
 
                 {

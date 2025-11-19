@@ -1,4 +1,5 @@
 import PostModal from "@/components/common/PostModal";
+import Header from "@/components/layout/Header";
 import { PostData } from "@/interfaces";
 import { Geist, Geist_Mono } from "next/font/google";
 import React, { useState } from "react";
@@ -33,7 +34,8 @@ export default function Home({ addPost }: IndexPageProps) {
 
 
   return (
-    <div className={` ${geistSans.className} ${geistMono.className} flex min-h-screen justify-center items-center dark:bg-black`}>
+    <div className={` ${geistSans.className} ${geistMono.className} flex flex-col min-h-screen justify-center items-center dark:bg-black`}>
+      <Header />
       <button className="bg-gray-600 p-2 text-md font-semibold rounded-lg cursor-pointer" onClick={handleOpenModal}>Create New Post</button>
       {
         isModalOpen && (
