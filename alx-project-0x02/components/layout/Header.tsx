@@ -16,7 +16,9 @@ const Header: React.FC = () => {
         <div className={`${geistSans.className} ${geistMono.className} flex w-full m-0 p-3 justify-center gap-5`}>
             <Link href="/">Webpage</Link>
             <Link href="/home">Home</Link>
+            <Link href="/posts">Post</Link>
             <Link href="/about">About</Link>
+            <Link href="/users">Users</Link>
         </div>
     )
 }

@@ -1,4 +1,11 @@
 export interface CardProps {
+  userId: number;
+  title: string;
+  content: string;
+}
+
+export interface PostProps {
+  userId: number;
   title: string;
   content: string;
 }
@@ -8,7 +15,19 @@ export interface PostData {
   content: string;
 }
 
-export interface PostProps extends PostData {
+export interface PostProp extends CardProps {
   onClose: () => void;
   addPost?: (post: PostData) => void;
+}
+
+export interface ButtonProps {
+  text: string;
+  size: string;
+  shape: string;
+}
+
+export interface UserProps {
+  name : string
+  email : string
+  address : string
 }

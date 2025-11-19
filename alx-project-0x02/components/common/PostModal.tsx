@@ -1,7 +1,7 @@
-import { PostData, PostProps } from "@/interfaces";
+import { PostData, PostProp } from "@/interfaces";
 import React from "react";
 
-const PostModal: React.FC<PostProps> = ({ title, content, onClose, addPost }) => {
+const PostModal: React.FC<PostProp> = ({ title, content, onClose, addPost }) => {
 
     const [post, setPost] = React.useState<PostData>({
         title: title,

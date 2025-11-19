@@ -27,7 +27,7 @@ const Home: React.FC<HomeProps> = ({ posts }) => {
                     posts.map((item, index) => {
                         return (
                             <div className="flex flex-col gap-5 mb-5" key={index}>
-                                <Card title={item.title} content={item.content} />
+                                <Card title={item.title} content={item.content} userId={item.userId} />
                             </div>
                         )
                     })

@@ -1,9 +1,9 @@
 import { type CardProps } from "@/interfaces";
 
-const Card: React.FC<CardProps> = ({ title, content }) => {
+const Card: React.FC<CardProps> = ({ userId, title, content }) => {
     return (
         <>
-            <h2 className="text-center">{title}</h2>
+            <h2 className="text-center" key={userId}>{title}</h2>
             <p className="border border-solid border-amber-100 p-4 rounded-lg">{content}</p>
         </>
     )

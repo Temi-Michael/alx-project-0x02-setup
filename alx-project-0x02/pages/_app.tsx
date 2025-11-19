@@ -9,7 +9,11 @@ export default function App({ Component, pageProps }: AppProps) {
   const [posts, setPosts] = useState<CardProps[]>(multipleCardContents);
 
   const addPost = (post: PostData) => {
-    setPosts((prevPosts) => [...prevPosts, { ...post }]);
+    const newPost = {
+      ...post,
+      userId: Date.now()
+    };
+    setPosts((prevPosts) => [newPost, ...prevPosts]);
   };
 
   const enhancedPageProps = {
