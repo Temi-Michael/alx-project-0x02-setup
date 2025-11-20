@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 
+
 const About: React.FC = () => {
     return (
         <div className={`${geistSans.className} ${geistMono.className} flex flex-col min-h-screen justify-center items-center dark:bg-black`}>

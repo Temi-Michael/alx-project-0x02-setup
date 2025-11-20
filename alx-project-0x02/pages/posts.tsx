@@ -1,6 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import { useState, useEffect } from "react";
-import { CardProps } from "@/interfaces";
+import { PostProps } from "@/interfaces";
 import PostCard from "@/components/common/PostCard";
 import Header from "@/components/layout/Header";
 
@@ -14,58 +13,17 @@ const geistMono = Geist_Mono({
     subsets: ["latin"],
 });
 
-const getPosts = async (url: string) => {
-    try {
-        const response = await fetch(url)
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`)
-        }
-        const data = await response.json()
-        return data
-    }
-    catch (error) {
-        console.error("Error Fetching Posts : ", error)
-        throw error
-    }
-}
 
 
-const Posts: React.FC = () => {
 
-    const [posts, setPosts] = useState<CardProps[]>([])
-    const [isLoading, setIsLoading] = useState<boolean>(true)
-    const [error, setError] = useState<string | null>(null)
+const Posts: React.FC<{ projects: PostProps[] }> = ({ projects }) => {
 
-    useEffect(() => {
-        const fetchPost = async () => {
-            try {
-                const fetchedPost = await getPosts("https://jsonplaceholder.typicode.com/posts")
-                setPosts(fetchedPost)
-            } catch (err) {
-                if (err instanceof Error) {
-                    setError(err.message);
-                } else {
-                    setError("An unknown error occurred while fetching posts.");
-                }
-            } finally {
-                setIsLoading(false)
-            }
-        }
-        fetchPost();
-    }, [])
-
-    if (isLoading) {
-        return <div className="text-white">Loading posts...</div>;
-    }
-    if (error) {
-        return <div className="text-red-500">Error: {error}</div>;
-    }
 
     return (
         <div className={`${geistSans.className} ${geistMono.className} w-full flex flex-col min-h-screen  p-8 dark:bg-black`}>
             <Header />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
-                {posts.map((post, index) => (
+                {projects.map((post, index) => (
                     <PostCard userId={post.userId} title={post.title} content={post.body} key={index} />
                 ))}                                                                                      </div>
         </div>
@@ -73,3 +31,10 @@ const Posts: React.FC = () => {
 }
 
 export default Posts;
+
+export async function getStaticProps() {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts")
+    const projects = await response.json()
+
+    return { props: { projects } }
+}

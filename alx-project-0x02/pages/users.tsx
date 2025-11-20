@@ -1,20 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import { useEffect, useState } from "react";
 import UserCard from "@/components/common/UserCard";
 import Header from "@/components/layout/Header";
+import { UserProps } from "@/interfaces";
 
-// Define the shape of the User object coming from the API
-interface ApiUser {
-    id: number;
-    name: string;
-    email: string;
-    address: {
-        street: string;
-        suite: string;
-        city: string;
-        zipcode: string;
-    };
-}
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -26,51 +14,9 @@ const geistMono = Geist_Mono({
     subsets: ["latin"],
 });
 
-const getUsers = async (url: string): Promise<ApiUser[]> => {
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error("Error fetching users:", error);
-        throw error;
-    }
-}
 
-const Users: React.FC = () => {
-    const [users, setUsers] = useState<ApiUser[]>([]);
-    const [isLoading, setIsLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
+const Users: React.FC<{ users: UserProps[] }> = ({ users }) => {
 
-    useEffect(() => {
-        const fetchUsers = async () => {
-            try {
-                const fetchedUsers = await getUsers("https://jsonplaceholder.typicode.com/users");
-                setUsers(fetchedUsers);
-            } catch (err) {
-                if (err instanceof Error) {
-                    setError(err.message);
-                } else {
-                    setError("An unknown error occurred while fetching users.");
-                }
-            } finally {
-                setIsLoading(false);
-            }
-        };
-
-        fetchUsers();
-    }, []);
-
-    if (isLoading) {
-        return <div className="text-white flex min-h-screen justify-center items-center">Loading users...</div>;
-    }
-
-    if (error) {
-        return <div className="text-red-500 flex min-h-screen justify-center items-center">Error: {error}</div>;
-    }
 
     return (
         <div className={`${geistSans.className} ${geistMono.className} flex flex-col min-h-screen items-center p-8 dark:bg-black`}>
@@ -80,7 +26,6 @@ const Users: React.FC = () => {
                 {users.map((user) => {
                     // Format the address object into a string
                     const formattedAddress = `${user.address.street}, ${user.address.suite}, ${user.address.city}, ${user.address.zipcode}`;
-                    
                     return (
                         <UserCard
                             key={user.id}
@@ -96,3 +41,10 @@ const Users: React.FC = () => {
 }
 
 export default Users;
+
+export async function getStaticProps() {
+    const response = await fetch("https://jsonplaceholder.typicode.com/users")
+    const users = await response.json()
+
+    return { props: { users } }
+}

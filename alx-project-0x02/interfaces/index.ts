@@ -23,7 +23,7 @@ export interface PostProp extends CardProps {
 export interface ButtonProps {
   text: string;
   size: string;
-  shape: string;
+  shape: "rounded-sm" | "rounded-md" | "rounded-lg";
 }
 
 export interface UserProps {
