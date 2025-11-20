@@ -22,12 +22,12 @@ export interface PostProp extends CardProps {
 
 export interface ButtonProps {
   text: string;
-  size: string;
+  size: "small" | "medium" | "large";
   shape: "rounded-sm" | "rounded-md" | "rounded-lg";
 }
 
 export interface UserProps {
-  name : string
-  email : string
-  address : string
+  name: string;
+  email: string;
+  address: string;
 }

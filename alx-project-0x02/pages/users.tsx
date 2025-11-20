@@ -21,8 +21,8 @@ const Users: React.FC<{ users: UserProps[] }> = ({ users }) => {
     return (
         <div className={`${geistSans.className} ${geistMono.className} flex flex-col min-h-screen items-center p-8 dark:bg-black`}>
             <Header />
-            <h1 className="text-4xl font-bold mb-8 text-white">Users</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
+            {/* <h1 className="text-4xl font-bold mb-8 text-white">Users</h1> */}
+            <div className="grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
                 {users.map((user) => {
                     // Format the address object into a string
                     const formattedAddress = `${user.address.street}, ${user.address.suite}, ${user.address.city}, ${user.address.zipcode}`;

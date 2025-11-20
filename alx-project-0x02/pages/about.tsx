@@ -20,9 +20,9 @@ const About: React.FC = () => {
             <Header />
             <h1>Make sure to know about me</h1>
             <div className="grid grid-cols-3 p-5 gap-5">
-                <Button text="Button 1" size="text-sm" shape="rounded-sm" />
-                <Button text="Button 2" size="text-md" shape="rounded-md" />
-                <Button text="Button 3" size="text-lg" shape="rounded-lg" />
+                <Button text="Button 1" size="small" shape="rounded-sm" />
+                <Button text="Button 2" size="medium" shape="rounded-md" />
+                <Button text="Button 3" size="large" shape="rounded-lg" />
             </div>
         </div>
     )
